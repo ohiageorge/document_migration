@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="document_migrate_wizard_form" model="ir.ui.view">
+        <field name="name">document.migrate.wizard.form</field>
+        <field name="model">document.migrate.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="model_id" options="{'no_create': True, 'no_open': True}" required="1" />
+                        <field name="file_field_id" options="{'no_create': True, 'no_open': True}"   required="1"/>
+                    </group>
+                    <group></group>
+                </group>
+                <div class="oe_clear"/>
+                <separator colspan="10" />
+                <footer>
+                    <button special="cancel" string="Close" />
+                    <button name="action_migrate" type="object" class="oe_highlight" string="Migrate Document" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--report-->
+    <record id="action_document_migrate_wizard" model="ir.actions.act_window">
+        <field name="name">Document Migration </field>
+        <field name="res_model">document.migrate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id ="menu_import_inseta_data" name="Document Migration"/>
+    <menuitem id="menu_document_migrate" name="Import Skills Data" sequence="1" parent="menu_import_inseta_data" action="action_document_migrate_wizard"/>
+
+
+</odoo>
